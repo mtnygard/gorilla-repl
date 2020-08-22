@@ -20,7 +20,7 @@
   :target-path "target/%s"
   :jvm-opts ~(let [version (System/getProperty "java.version")
                    [major _ _] (clojure.string/split version #"\.")]
-               (if (>= (java.lang.Integer/parseInt major) 9)
+               (if (<= 9 (java.lang.Integer/parseInt major) 11)
                  ["--add-modules" "java.xml.bind"]
                  []))
   :release-tasks [["vcs" "assert-committed"]
